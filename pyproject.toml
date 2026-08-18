@@ -1,0 +1,27 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "dual-arm-handover"
+version = "0.1.0"
+description = "Synchronized mid-air object handover for dual-arm collaborative manipulation"
+requires-python = ">=3.10"
+dependencies = [
+    "numpy>=1.24",
+    "PyYAML>=6.0",
+]
+
+[project.optional-dependencies]
+ros2 = ["rclpy"]
+dev = ["pytest>=7.0"]
+
+[project.scripts]
+run-simulated-handover = "dual_arm_handover.simulate:main"
+
+[tool.setuptools.packages.find]
+include = ["dual_arm_handover*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
